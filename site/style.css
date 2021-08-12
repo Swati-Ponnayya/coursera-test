@@ -55,12 +55,12 @@ h1{
     .column{
         width:45%;
     }
-    #column1{
+    #column3{
         width:95%;
     }
 }
 @media (max-width:767px){
     .column{
-        width:90%; 
-    }
+    width:80%;
+    }  
 }
