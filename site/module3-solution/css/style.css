@@ -3,10 +3,12 @@
     padding:0px;
     color: black;
 }
+
 #header-nav {
   background-color:gray;
   border-radius: 0;
-  border:2px solid black;  
+  border:2px solid black;
+    width: 100%
 }
 .navbar-brand {
   padding-top:25px; 
