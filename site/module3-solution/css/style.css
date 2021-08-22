@@ -35,14 +35,22 @@
     color: black;
     margin:0;
     height:35px;
-}
-#nav-list a:hover{
     background-color: white;
 }
-
+#nav-list li:nth-child(2){
+      border-bottom: 2px solid black;
+      border-top: 2px solid black;
+}
+#nav-list a:hover{
+    background-color:lightgrey;
+}
 .navbar{
         height:80px;
     }
+#collapsable-nav{
+    background-color: white;
+}
+
 /*main*/
 h1{
     text-align:center;
