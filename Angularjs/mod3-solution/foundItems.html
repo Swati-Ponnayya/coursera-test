@@ -1,1 +1,7 @@
-<div class="loader"></div>
+
+    <ul ng-repeat="item in found.items">
+      <div>
+          <h3>({{item.short_name}}) {{item.name}}</h3> <p>{{item.description}}</p>
+      </div>
+      <button ng-click="found.onRemove({index : $index})"> Don't want this one!</button>
+    </ul>

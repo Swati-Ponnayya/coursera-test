@@ -8,7 +8,7 @@
 
   function FoundItemsDirective() {
     var ddo = {
-//      templateUrl : 'foundItems.html',
+      templateUrl : "foundItems.html",
       scope: {
         items: '<',
         onRemove: '&'
@@ -17,6 +17,7 @@
       controllerAs: 'found',
       bindToController: true
     }
+
     return ddo;
   }
   NarrowItDownController.$inject = ["MenuSearchService"]
@@ -32,9 +33,9 @@
           found.errorMessage = "Nothing Found!";
         } else {
           found.errorMessage = "";
-             }console.log(found.list);
+        }
       })
-    }; 
+    };
     found.removeItem = (index) =>{
       found.list.splice(index, 1);
     }
