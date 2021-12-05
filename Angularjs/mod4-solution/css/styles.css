@@ -1,21 +1,50 @@
 body {
   font-size: 1.2em;
-}
 
+}
+li[ui-sref]{
+    background-color: gainsboro;
+    display: inline-block;
+    margin:10px;
+    padding: 20px;
+    border: solid gainsboro 1px;
+}
 
 li[ui-sref]:hover {
   display: inline-block;
   cursor: pointer;
-  border: dotted black 2px;
-  padding-left: 5px;
-  padding-right: 5px;
+  border: dotted black 1px;
 
+}
+ li{
+    background-color: whitesmoke;
 }
 p{
         display: inline-block;
         font-weight: 600;
+        font-size: 1em;
     }
-p span{
+ span{
         font-size: 0.85em;
         font-weight: 400;
     }
+h1{
+    text-align: center;
+    padding: 10px;
+    background-color: beige;
+    display: block;
+}
+a{
+    display:inline-block;
+    background-color:bisque;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    margin: 10px;
+    font-weight: 700;
+}
+a:hover{
+    background-color: peachpuff;
+    padding: 11px;
+    
+}
