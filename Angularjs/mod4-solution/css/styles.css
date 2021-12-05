@@ -1,0 +1,21 @@
+body {
+  font-size: 1.2em;
+}
+
+
+li[ui-sref]:hover {
+  display: inline-block;
+  cursor: pointer;
+  border: dotted black 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+}
+p{
+        display: inline-block;
+        font-weight: 600;
+    }
+p span{
+        font-size: 0.85em;
+        font-weight: 400;
+    }
