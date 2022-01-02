@@ -1,32 +1,39 @@
 (function () {
-"use strict";
+    "use strict";
 
-angular.module('common')
-.service('MenuService', MenuService);
-
-
-MenuService.$inject = ['$http', 'ApiPath'];
-function MenuService($http, ApiPath) {
-  var service = this;
-
-  service.getCategories = function () {
-    return $http.get(ApiPath + '/categories.json').then(function (response) {
-      return response.data;
-    });
-  };
+    angular.module('common')
+    .service('MenuService', MenuService);
 
 
-  service.getMenuItems = function (category) {
-    var config = {};
-    if (category) {
-      config.params = {'category': category};
-    }
+    MenuService.$inject = ['$http', 'ApiPath'];
+    function MenuService($http, ApiPath) {
+      let service = this;
+      let user = {};
 
-    return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
-      return response.data;
-    });
-  };
+      service.getCategories = function () {
+        return $http.get(ApiPath + '/categories.json').then(function (response) {
+          return response.data;
+        });
+      };
+      service.getMenuItems = function (category) {
+        var config = {};
+        if (category) {
+          config.params = {'category': category};
+        }
 
+        return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
+          return response.data;
+        });
+      };
+      service.getMenuItem = function(shortName) {
+          return $http.get(ApiPath + '/menu_items/' + shortName + '.json');
+      }
+      service.setUser = function(userObj) {
+          user = userObj;
+      }
+      service.getUser = function() {
+          return user;
+      }
 }
 
 

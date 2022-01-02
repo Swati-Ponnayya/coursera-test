@@ -1,69 +1,55 @@
-<style>
-     h1{
-         padding-bottom: 30px;
-    }
-</style>
-<div class="container" >
-  <h1>Sign Up</h1>
-  <form action="#" name="signUpForm" novalidate>
-    <div class="row">
-      <div class="col-md-6">
-        <p>
-          <label for="firstName">First name * :</label>
-          <input type="text" name="firstName" id="firstName"
-            ng-model="signUpCtrl.firstName" minlength="2" class="form-control" required>
-          <span ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched"
-            style="color:  red" >First name must be at least 2 characters</span>
-        </p>
+<form class="container" name="signUpForm" novalidate ng-submit="signup.submit(signUpForm);">
+    <h1 class="text-center" style="margin-bottom: 4%;">Sign Up!</h1>
 
-        <p>
-          <label for="lastName">Last name * :</label>
-          <input type="text" name="lastName" id="lastName"
-            ng-model="signUpCtrl.lastName" minlength="2" class="form-control" required>
-          <span ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched"
-            style="color: red">Last name must be at least 2 characters</span>
-        </p>
-
-        <p>
-          <label for="email">E-mail address * :</label>
-          <input type="email" name="email" id="email"
-            ng-model="signUpCtrl.email" minlength="2" class="form-control" required>
-          <span ng-if="(signUpForm.email.$invalid || signUpForm.email.$error.required) && signUpForm.email.$touched"
-            style="color: red">E-mail address is invalid</span>
-        </p>
-
-        <p>
-          <label for="phone">Phone number :</label>
-          <input type="phone" name="phone" id="phone" placeholder="91-##########"
-            ng-model="signUpCtrl.phone" pattern="(\d{2})-(\d{10})" class="form-control">
-          <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched"
-            style="color:red">Phone number must only contain numbers, spaces and dashes</span>
-        </p>
-
-        <p>
-          <label for="favoriteDish">Favorite dish:</label>
-          <input type="text" name="favoriteDish" id="favoriteDish" placeholder="Enter short name of favorite dish"
-            ng-model="signUpCtrl.favoriteDish" minlength="1" ng-maxlength="4" class="form-control">
-          <span ng-if="(signUpForm.favoriteDish.$error.minlength || signUpForm.favoriteDish.$error.minlength) && signUpForm.favoriteDish.$touched"
-            style="color:red">Short name of dish is 1-2 letters and 1-2 numbers</span>
-          <span ng-if="signUpCtrl.registrationSuccess && !signUpCtrl.favoriteDishFound"
-            style="color:red">No such menu number exists! ;-(</span>
-        </p><br>
-        <p><button class="btn btn-primary" ng-disabled="signUpForm.$invalid"
-          ng-click="signUpCtrl.signUp($event)">Sign up</button></p>
-      </div>
-
-      <div class="col-md-6">
-        <div class="panel panel-success" ng-if="signUpCtrl.registrationSuccess">
-          <div class="panel-heading">Success!!</div>
-          <div class="panel-body" style="color: green">
-            <p>Sign up succeded!</p>
-
-          </div>
+        <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <span ng-show="signUpForm.firstName.$error.required &&
+             (!signUpForm.firstName.$pristine || signUpForm.$submitted)" style="color: red">Please enter your first name.</span>
+            <input type="text" id="firstName" name="firstName" ng-model="signup.firstName"
+            class="form-control" placeholder="First Name" required>
+        </div>
+        <div class="form-group ">
+            <label for="lastName">Last Name *</label>
+            <span ng-show="signUpForm.lastName.$error.required &&
+             (!signUpForm.lastName.$pristine || signUpForm.$submitted)" style="color: red">Please enter your last name.</span>
+            <input type="text" id="lastName" name="lastName" required ng-model="signup.lastName"
+                   class="form-control" placeholder="Last Name">
         </div>
 
-      </div>
-
-    </div>
-  </form>
-</div>
+        <div class="form-group ">
+            <label for="email">Email address *</label>
+            <span ng-show="signUpForm.email.$error.required &&
+             (!signUpForm.email.$pristine || signUpForm.$submitted)" style="color: red">Please enter an email address.</span>
+             <!-- <span class="alert-danger" ng-show="signUpForm.email.$error.email">
+             Please enter a valid email address.</span> -->
+            <input type="text" id="email" name="email" required ng-model="signup.email"
+            class="form-control" placeholder="Email address">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <span ng-show="signUpForm.phone.$error.required &&
+             (!signUpForm.phone.$pristine || signUpForm.$submitted)" style="color: red">Please enter a phone number.</span>
+             <span ng-show="signUpForm.phone.$error.minlength || signUpForm.phone.$error.maxlength" style="color: red"
+            >Your phone number should be 10 digits long.</span>
+            <input type="text" id="phone" name="phone" required ng-model="signup.phone"
+            class="form-control" placeholder="Phone Number" ng-minlength="10" ng-maxlength="10">
+        </div>
+    
+    
+        <div class="form-group">
+            <label for="shortName">Short Name *</label>
+            <span  ng-show="signUpForm.shortName.$error.required &&
+             (!signUpForm.shortName.$pristine || signUpForm.$submitted)" style="color: red">Please enter the short name.</span>
+             <span ng-show="signup.showError">Invalid short Name!</span>
+            <input type="text" id="shortName" name="shortName" required ng-model="signup.shortName"
+            class="form-control" placeholder="Short Name">
+        </div>
+        <div class="form-group ">
+            <label>Submit:</label>
+            <button type="submit" required
+            class="form-control btn btn-primary">Sign in</button>
+            <span class="alert-success text-center"
+            ng-show="signup.showMessage">Information has been saved!</span>
+        </div>
+   
+</form>

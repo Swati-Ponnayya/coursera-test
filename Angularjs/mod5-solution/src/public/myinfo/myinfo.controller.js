@@ -1,27 +1,15 @@
-(function () {
-  "use strict";
+(function() {
+    'use strict';
 
-  angular.module('public')
-  .controller('MyInfoController', MyInfoController);
+    angular.module('public')
+        .controller('MyInfoController',MyInfoController)
 
-  MyInfoController.$inject = ['user'];
-  function MyInfoController(user) {
-    var $ctrl = this;
-    $ctrl.signedUp = false;
-    $ctrl.favoriteMenuItem;
+    MyInfoController.$inject = ['user','ApiPath'];
+    function MyInfoController(user,ApiPath) {
+        let myinfo = this;
 
-    if(user) {
-      $ctrl.signedUp = true;
-      $ctrl.firstName = user.firstName;
-      $ctrl.lastName = user.lastName;
-      $ctrl.email = user.email;
-      $ctrl.phone = user.phone;
-      $ctrl.favoriteDish = user.favoriteDish;
-      $ctrl.favoriteMenuItem = user.favoriteMenuItem;
+        myinfo.isUserRegistered = !(Object.keys(user).length === 0 && user.constructor === Object);
+        myinfo.ApiPath = ApiPath;
+        myinfo.user = user;
     }
-    else {
-      $ctrl.signedUp = false;
-    }
-  }
-
-})();
+}());
