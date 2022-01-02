@@ -3,7 +3,7 @@
 
 angular.module('public')
 .component('signUp', {
-  templateUrl: 'src/public/home/sign-up/sign-up.html'
+  templateUrl: 'src/public/home/signup/signup.html'
   
 });
 
