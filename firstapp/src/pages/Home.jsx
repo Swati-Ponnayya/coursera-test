@@ -64,7 +64,6 @@ function Home() {
 			navigate("./Recipelist", { state: { id: { Recipelist } } });
 	}, [Recipelist]);
 
-
 	return (
 		<div className="main">
 			<div className="display">

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 const Login = () => {
-    const navigate= useNavigate ();
+    const navigate = useNavigate();
     // Login Information store
     const [loginInfo, setLoginInfo] = useState({ username: "", pass: "" });
     const handleChangeLogin = (event) => {
@@ -21,10 +22,13 @@ const Login = () => {
     const [authorizationError, setauthorizationError] = useState({});
     const [isLoginSubmit, setisLoginSubmit] = useState(false);
 
-    const handleSubmitLogin = (e) => {
+    const handleSubmitLogin = async (e) => {
         e.preventDefault();
         setLoginFormError(validateLogin(loginInfo));
         setauthorizationError(authorize(loginInfo));
+        // const res = await signIn(loginInfo);
+        // if (res.error) seterror(res.error);
+
     }
 
     const authorize = (values) => {
@@ -52,7 +56,7 @@ const Login = () => {
     }
 
     return (
-        <div className="login"> 
+        <div className="login">
             <form>
                 <h1>Log In</h1>
                 <div>
@@ -67,7 +71,7 @@ const Login = () => {
                 <p>{authorizationError.errorText}</p>
             </form>
             <div>
-                {Object.keys(loginFormErrors).length === 0 && isLoginSubmit ? (navigate("/",{state:{name: loginInfo.username}})) : ("")}
+                {Object.keys(loginFormErrors).length === 0 && isLoginSubmit ? (navigate("/", { state: { name: loginInfo.username } })) : ("")}
                 <h6>Don't have an account <Link to="/signin" >Sign In</Link></h6>
             </div>
         </div>
