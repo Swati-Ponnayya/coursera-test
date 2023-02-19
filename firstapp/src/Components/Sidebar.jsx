@@ -53,5 +53,11 @@ export const SidebarData = [
     path: '/support',
     icon: <MdIcons.MdSettings/>,
     cName: 'nav-text'
+  },
+  {
+    title: 'Log Out',
+    path: '/signOut',
+    icon: <MdIcons.MdLogout/>,
+    cName: 'nav-text'
   }
 ];

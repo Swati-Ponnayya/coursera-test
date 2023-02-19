@@ -1,5 +1,9 @@
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/database';
+// import firebase from 'firebase/compat/app'
+// import 'firebase/compat/database';
+
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCuldu1XKqstq-ETu53rb--5VkgXv2R-MY",
@@ -10,7 +14,14 @@ const firebaseConfig = {
     appId: "1:416884799422:web:bd9824170525bf1c952bef",
     measurementId: "G-D3PJQMYJ11"
 };
-firebase.initializeApp(firebaseConfig);
 
-export const dataref = firebase.database();
-export default firebase;
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
+
+// firebase.initializeApp(firebaseConfig);
+
+// export const dataref = firebase.database();
+// export default firebase;

@@ -1,21 +1,43 @@
 import Logo from "../img/account_circle.png"
 import "./Navheader.css";
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './Sidebar';
-
+import { UserAuth } from "../firebase/Auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+// import React, { useEffect, useState } from "react";
+import { auth } from "../firebase/firebase";
 
 function Navheader() {
+    // const { user, logout } = UserAuth();
     const [sidebar, setSidebar] = useState(false);
+
+    const [authUser, setAuthUser] = useState(null);
+
+    useEffect(() => {
+        const listen = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuthUser(user);
+            } else {
+                setAuthUser(null);
+            }
+        });
+
+        return () => {
+            listen();
+        };
+    }, []);
+
+
 
     const showSidebar = () => setSidebar(!sidebar);
     return (<>
         <div className="Navheader">
             {/* <IconContext.Provider value={{ color: '#ff' }}>  sidebar  */}
             <div className='navbar'>
-                <button  className='menu-bars'>
+                <button className='menu-bars'>
                     <FaIcons.FaBars onClick={showSidebar} />
                 </button>
 
@@ -41,9 +63,13 @@ function Navheader() {
                 </ul>
             </nav> <a href="/"><h2>Cook Now</h2></a>
             <div className="User_info">
-                <h3>abc</h3>
-                <Link to="./login">
-                <img src={Logo} alt="account_circle.png"/></Link>
+                {authUser ? (
+                    <p>{authUser.email.replace(/@[^@]+$/, '')}</p>
+                ) : (
+                    <p>Log Out</p>
+                )}
+                <Link to="/login">
+                    <img src={Logo} alt="account_circle.png" /></Link>
             </div></div>
     </>
     )

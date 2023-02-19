@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebase/firebase";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import "./Login.css";
 
 
 const Login = () => {
@@ -16,31 +19,39 @@ const Login = () => {
             }
         });
     }
+    // forget password
+    const handleForgottenPassword = async () => {
+        await sendPasswordResetEmail(auth, loginInfo.username)
+            .then(function () {
+                alert('Please check your email')
+            }).catch(function (e) {
+                console.log(e)
+            })
+
+    }
 
     // Login form validation
     const [loginFormErrors, setLoginFormError] = useState({});
-    const [authorizationError, setauthorizationError] = useState({});
-    const [isLoginSubmit, setisLoginSubmit] = useState(false);
+    const [authorizationError, setauthorizationError] = useState("");
+    // const [isLoginSubmit, setisLoginSubmit] = useState(false);
 
     const handleSubmitLogin = async (e) => {
         e.preventDefault();
         setLoginFormError(validateLogin(loginInfo));
-        setauthorizationError(authorize(loginInfo));
+        // setauthorizationError((loginInfo));
         // const res = await signIn(loginInfo);
         // if (res.error) seterror(res.error);
-
-    }
-
-    const authorize = (values) => {
-        const errors = {};
-        if (values.username !== "" && values.pass !== "") {
-            if (values.username === "admin" && values.pass === "admin") {
-                setisLoginSubmit(true);
-            } else {
-                errors.errorText = "Wrong Email ID or Password";
-            }
-        }
-        return errors;
+        signInWithEmailAndPassword(auth, loginInfo.username, loginInfo.pass)
+            .then((userCredential) => {
+                //   console.log(userCredential);
+                setLoginInfo("")
+                navigate("/")
+            })
+            .catch((error) => {
+                console.log(error.message);
+                setauthorizationError(error.message);
+                // alert(authorizationError);
+            });
     }
 
     const validateLogin = (values) => {
@@ -60,19 +71,20 @@ const Login = () => {
             <form>
                 <h1>Log In</h1>
                 <div>
-                    <input type="text" placeholder="User Name" name="username" onChange={handleChangeLogin} value={loginInfo.username} />
+                    <input type="email" placeholder="Email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" name="username" onChange={handleChangeLogin} value={loginInfo.username} />
                     <p>{loginFormErrors.username}</p>
                 </div>
                 <div>
                     <input type="password" placeholder="Password" maxLength="10" name="pass" onChange={handleChangeLogin} value={loginInfo.pass} />
                     <p>{loginFormErrors.pass}</p>
                 </div>
+                <h5 onClick={handleForgottenPassword}>Forget Password </h5>
                 <input type="submit" value="Login" onClick={handleSubmitLogin} />
-                <p>{authorizationError.errorText}</p>
+                <p>{authorizationError}</p>
             </form>
             <div>
-                {Object.keys(loginFormErrors).length === 0 && isLoginSubmit ? (navigate("/", { state: { name: loginInfo.username } })) : ("")}
-                <h6>Don't have an account <Link to="/signin" >Sign In</Link></h6>
+                {/* {Object.keys(loginFormErrors).length === 0 && isLoginSubmit ? ("g") : ("")} */}
+                <h6>Don't have an account <Link to="/signup" >Sign In</Link></h6>
             </div>
         </div>
     );

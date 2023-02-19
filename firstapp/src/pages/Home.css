@@ -93,14 +93,14 @@ hr {
 }
 
 .find{
-    width:10vw;
+    width:8vw;
     border-left: #B7472A 2px solid;
     box-sizing: border-box;
     display: inline-block;
-    margin: 15px;
+    margin: 3vh 3vh 0 2vh;
     position: absolute;
     /* top: 10vh; */
-    right:2vw;
+    right:1px;
 }
 
 .find button {
@@ -115,8 +115,8 @@ hr {
 
 .sel_ing {
     height: 50px;
-    width: 84vw;
-    margin: 15px;
+    width: 82vw;
+    margin: 4vh 5vh 0 2vh;
     overflow: scroll;
     overflow-y: hidden;
     overflow-wrap: normal;
@@ -125,6 +125,7 @@ hr {
     display: inline-flex;
     position: absolute;
     left:5px;
+    box-sizing: border-box;
 }
 
 .ing_sel{
