@@ -15,8 +15,6 @@
   }
 
   .signup a {
-    /* text-decoration: none; */
-    /* color: whitesmoke; */
     font-size: 1.1em;
     text-transform: uppercase;
 
@@ -26,7 +24,7 @@
     border-color: #B7472A;
     padding: 6px;
     width: 25vw;
-    height: 4vh;
+    height: 3vh;
     border-radius: 10px;
     margin-top: 5vh;
   }
@@ -39,13 +37,82 @@
     font-weight: 600;
     padding: 5px;
     width: 10vw;
-    height: 7vh;
+    height: 6vh;
     border-radius: 15px;
-    margin-top: 5vh;
+    margin-top: 4vh;
+    box-sizing: border-box;
   }
 
   .signup p {
     font-size: 0.8em;
-    color: whitesmoke;
-    margin: 0;
+    color: wheat;
+    margin: 2px;
+    box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 992px) {
+    .signup h5 {
+      margin-right: 5vw;
+    }
+
+    .signup {
+      width: 60vw;
+      height: 500px;
+    }
+
+    .signup input {
+      width: 45vw;
+      height: 2.8vh;
+      font-size: 1em;
+      margin-top: 4vh;
+    }
+
+    .signup input[type=submit] {
+      width: 25vw;
+      height: 4vh;
+      margin-top: 2vh;
+      font-size: 1em;
+    }
+
+    .signup h6 {
+      font-size: 1em;
+    }
+
+    .signup p {
+      font-size: 0.9em;
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+    .signup {
+      width: 75vw;
+      height: 420px;
+    }
+
+    .signup input {
+
+      width: 60vw;
+      height: 2.5vh;
+      margin-top: 4vh;
+    }
+
+    .signup input[type=submit] {
+      width: 25vw;
+      height: 5vh;
+      margin-top: 3vh;
+      font-size: 0.8em;
+    }
+
+    .signup h1 {
+      font-size: 1.6em;
+    }
+
+    .signup h6 {
+      font-size: 0.8em;
+    }
+
+    .signup p {
+      font-size: 0.7em;
+    }
   }

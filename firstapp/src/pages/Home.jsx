@@ -39,25 +39,25 @@ function Home() {
 
 	// fetching the Recipe id from api 
 	const fetchRecipe = async () => {
-	// 	setIsLoading(true);
-	// 	try {
-	// 		const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3d7009d38e2c4ad8aaa806685013cbd5&ingredients=${list} `);
+		setIsLoading(true);
+		try {
+			const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=3d7009d38e2c4ad8aaa806685013cbd5&ingredients=${list} `);
 
-	// 		if (!response.ok) {
-	// 			throw new Error(`Error! status: ${response.status}`);
-	// 		}
-	// 		const result = await response.json();
+			if (!response.ok) {
+				throw new Error(`Error! status: ${response.status}`);
+			}
+			const result = await response.json();
+			console.log(result)
+			result.map((recipes) => {
+				setRecipelist((recipe) => [...recipe, recipes.id])
+			})
 
-	// 		result.map((recipes) => {
-	// 			setRecipelist((recipe) => [...recipe, 634785])
-	// 		})
-
-	// 	} catch (err) {
-	// 		setErr(err.message);
-	// 	} finally {
-	// 		setIsLoading(false);
-	// 	}
-	setRecipelist([634785,646974,157991])
+		} catch (err) {
+			setErr(err.message);
+		} finally {
+			setIsLoading(false);
+			
+		}
 	};
 	// passing the recipe id to other page 
 	

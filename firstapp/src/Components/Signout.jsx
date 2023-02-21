@@ -9,9 +9,11 @@ const Signout = () => {
     const navigate = useNavigate();
     signOut(auth)
         .then(() => {
-            console.log("sign out successful");
+            // console.log("sign out successful");
             navigate("/")
+            alert("Sign out successfully")
         })
         .catch((error) => console.log(error));
+
 };
 export default Signout;
