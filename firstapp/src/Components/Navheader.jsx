@@ -5,8 +5,7 @@ import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './Sidebar';
-import { UserAuth } from "../firebase/Auth";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged} from "firebase/auth";
 // import React, { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase";
 
@@ -61,7 +60,7 @@ function Navheader() {
                         );
                     })}
                 </ul>
-            </nav> <a href="/"><h2>Cook Now</h2></a>
+            </nav> <a href="/"><h2 className="h2">Cook Now</h2></a>
             <div className="User_info">
                 {authUser ? (
                     <p>{authUser.email.replace(/@[^@]+$/, '')}</p>

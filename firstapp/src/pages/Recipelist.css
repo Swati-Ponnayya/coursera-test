@@ -1,0 +1,42 @@
+.Display_R{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.backH h4{
+    color: black;
+    text-align: left;
+    text-decoration: underline;
+    background-color: gainsboro;
+    padding: 10px;
+    margin-top: 0;
+}
+.RecipesList {
+    border: 1px black solid;
+    width: 75vw;
+    height: 135px;
+    margin: 20px;
+    text-align: left;
+}
+
+.RecipesList img {
+    width: 160px;
+    height: 132px;
+    margin: 1px;
+    float: left;
+    margin-right: 25px;
+}
+.RecipesList h3{
+    text-decoration: none;
+    color: black;
+}
+
+.RecipesList p{
+    text-decoration: none;
+    color: black;
+}
+a:-webkit-any-link{
+    text-decoration: none;
+
+}

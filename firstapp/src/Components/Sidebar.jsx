@@ -32,43 +32,43 @@ export const SidebarData = [
   },
   {
     title: 'Shopping',
-    path: '/reports',
+    path: 'https://www.bigbasket.com',
     icon: <FaIcons.FaShoppingCart />,
     cName: 'nav-text'
   },
   {
     title: 'Popular Recipes',
-    path: '/products',
+    path: '',
     icon: <HiIcons.HiTrendingUp />,
     cName: 'nav-text'
   },
   {
     title: 'Article',
-    path: '/team',
+    path: '/articles',
     icon: <MdIcons.MdArticle />,
     cName: 'nav-text'
   },
   {
     title: 'Saved Recipes',
-    path: '/messages',
+    path: '',
     icon: <MdIcons.MdBookmark />,
     cName: 'nav-text'
   },
   {
     title: 'Suggestion',
-    path: '/support',
+    path: '/suggestion',
     icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
   },
   {
     title: 'About Us',
-    path: '/support',
+    path: '',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
     title: 'Settings',
-    path: '/support',
+    path: '',
     icon: <MdIcons.MdSettings />,
     cName: 'nav-text'
   // },

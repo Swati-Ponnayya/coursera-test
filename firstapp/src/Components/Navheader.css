@@ -9,7 +9,7 @@ body {
   box-sizing: border-box;
 }
 
-h2 {
+.h2 {
   color: white;
   font-size: 2em;
   font-family: Merriweather Sans;
@@ -142,7 +142,7 @@ span {
 
 @media screen and (max-width: 992px) {
 
-  h2 {
+  .h2 {
     font-size: 1.9em;
   }
   /* idebr */
@@ -163,7 +163,7 @@ span {
 
 @media screen and (max-width: 600px) {
 
-  h2 {
+  .h2 {
     font-size: 1.7em;
     margin-top: 2.5vh;
   }

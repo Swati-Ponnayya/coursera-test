@@ -1,30 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import "./Recipelist.css";
+import { Link } from 'react-router-dom';
 
 const Recipelist = () => {
-    const { state } = useLocation();
-    const { id } = state;
-    // const { miss_ing } = state;
     const [err, setErr] = useState('');
     const [data, setData] = useState([]);
-    const list = id.Recipelist;
 
     // key=da1d576ade9846be99f6a854ae590ac0  3d7009d38e2c4ad8aaa806685013cbd5
     useEffect(() => {
-        const data2 = () => {
-            list.map(async (idlist) => {
-                try {
-                    const response = await fetch(`https://api.spoonacular.com/recipes/${idlist}/information?apiKey=da1d576ade9846be99f6a854ae590ac0 `);
-                    if (!response.ok) {
-                        throw new Error(`Error! status: ${response.status}`);
-                    }
-                    const result = await response.json();
-                    setData((recipe) => [...recipe, result])
-                } catch (err) {
-                    setErr(err.message);
+        const data2 = async () => {
+            try {
+                const response = await fetch(`https://api.spoonacular.com/recipes/information?apiKey=da1d576ade9846be99f6a854ae590ac0 `);
+                if (!response.ok) {
+                    throw new Error(`Error! status: ${response.status}`);
                 }
-            });
+                const result = await response.json();
+                setData((recipe) => [...recipe, result])
+            } catch (err) {
+                setErr(err.message);
+            }
+
         }; data2();
     }, [])
     // console.log(data)
