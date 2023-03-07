@@ -5,16 +5,15 @@ import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './Sidebar';
-import { onAuthStateChanged} from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 // import React, { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Navheader() {
     // const { user, logout } = UserAuth();
     const [sidebar, setSidebar] = useState(false);
-
     const [authUser, setAuthUser] = useState(null);
-
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -43,7 +42,12 @@ function Navheader() {
             </div>
 
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <ul className='nav-menu-items' onClick={showSidebar}>
+                {sidebar ? <style>{`
+                    .Display, hr {
+                        position:static;
+                    }`}
+                </style> : ""}
+                <ul className='nav-menu-items' onClick={showSidebar} >
                     <li className='navbar-toggle'>
                         <button to='#' className='menu-bars'>
                             <AiIcons.AiOutlineClose />
@@ -67,8 +71,12 @@ function Navheader() {
                 ) : (
                     <p>Log Out</p>
                 )}
-                <Link to="/login">
-                    <img src={Logo} alt="account_circle.png" /></Link>
+                {/* <Link to="/login"> */}
+                {authUser ? <Link to="/signOut">
+                    <img src={Logo} alt="account_circle.png" />
+                </Link> : <Link to="/login">
+                    <img src={Logo} alt="account_circle.png" />
+                </Link>}
             </div></div>
     </>
     )

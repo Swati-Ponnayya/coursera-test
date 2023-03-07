@@ -9,6 +9,9 @@ import Signup from './pages/Signup';
 import Signout from './Components/Signout';
 import Suggestion from './pages/Suggestion';
 import Articles from './pages/Articles';
+import PopularRecipe from './pages/PopularRecipe';
+import SavedRecipe from './pages/SavedRecipe';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/signOut' element={<Signout />} />
+          <Route path='/popularRecipe' element={<PopularRecipe />} />
+          <Route path='/savedRecipes' element={<SavedRecipe/>}/>
+          <Route path='/settings' element={<Settings/>}/>
         </Routes>
       </Router>
       {/* </AuthContextProvider> */}

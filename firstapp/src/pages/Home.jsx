@@ -67,7 +67,7 @@ function Home() {
 
 	return (
 		<div className="main">
-			<div className="display">
+			<div className="Display">
 				{/* deleting ingredient */}
 				<div className="sel_ing">
 					{list.map((ing, index) => (

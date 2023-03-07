@@ -42,14 +42,17 @@ const Login = () => {
         // const res = await signIn(loginInfo);
         // if (res.error) seterror(res.error);
         signInWithEmailAndPassword(auth, loginInfo.username, loginInfo.pass)
-            .then((userCredential) => {
+            .then(() => {
                 //   console.log(userCredential);
                 setLoginInfo("")
                 navigate("/")
             })
             .catch((error) => {
-                console.log(error.message);
-                setauthorizationError(error.message);
+                // console.log(error.message);
+                if (error.code === "auth/wrong-password")
+                    setauthorizationError("Wrong Password");
+                if (error.code === "auth/user-not-found")
+                    setauthorizationError("Wrong Email")
                 // alert(authorizationError);
             });
     }

@@ -2,16 +2,19 @@ import React, { useRef } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
 import "./Suggestion.css";
 
 function Suggestion() {
     const form = useRef();
+    const navigate = useNavigate();
     const sendEmail = (event) => {
         event.preventDefault();
         emailjs.sendForm('service_wv5adxd', 'template_uo5g3dg', form.current, 'nJRZV4gYir0iIzzKq')
             .then((result) => {
+                alert("Thanks for submitting the suggestion")
+                navigate("/")
                 // show the user a success message
             }, (error) => {
                 // show the user an error

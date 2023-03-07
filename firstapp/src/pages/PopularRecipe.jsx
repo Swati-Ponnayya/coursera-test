@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import "./PopularRecipe.css"
 
-const Recipelist = () => {
+const PopularRecipe = () => {
     const [err, setErr] = useState('');
     const [data, setData] = useState([]);
 
@@ -9,37 +10,34 @@ const Recipelist = () => {
     useEffect(() => {
         const data2 = async () => {
             try {
-                const response = await fetch(`https://api.spoonacular.com/recipes/information?apiKey=da1d576ade9846be99f6a854ae590ac0 `);
+                const response = await fetch(`https://api.spoonacular.com/recipes/random?number=1&apiKey=da1d576ade9846be99f6a854ae590ac0`);
                 if (!response.ok) {
                     throw new Error(`Error! status: ${response.status}`);
                 }
                 const result = await response.json();
-                setData((recipe) => [...recipe, result])
+                console.log(result.recipes)
+                setData(result.recipes)
             } catch (err) {
                 setErr(err.message);
             }
-
         }; data2();
     }, [])
-    // console.log(data)
 
     return (
         <>
             <Link to="/" className='backH'><h4>&lt; Home</h4></Link>
-            <div className='Display_R'>
+            <h1>Popular Recipe</h1>
+            <div className='Display_P'>
                 {err && <h3>{err}</h3>}
                 {data.map((data1, index) => {
                     return (
-                        <div key={index} className="RecipesList">
+                        <div key={index} className="P_RecipesList">
                             <Link to={data1.spoonacularSourceUrl}>
                                 <img src={data1.image} height="100px" alt={data1.title} />
-                                <h3 >{data1.title}</h3>
+                                <h3>{data1.title}</h3>
                                 <p>Cooking Time :-  {data1.readyInMinutes} mintues</p>
                                 <p>Serving :-  {data1.servings} person</p>
-                                {/* {miss_ing}
-                                {miss_ing.map((m_ing, index) => {
-                                    return <p key={index}>{m_ing}</p>
-                                })} */}
+                                <p></p>{data1.instructions}
                             </Link>
                         </div>
                     )
@@ -48,4 +46,4 @@ const Recipelist = () => {
         </>
     )
 }
-export default Recipelist;
+export default PopularRecipe;

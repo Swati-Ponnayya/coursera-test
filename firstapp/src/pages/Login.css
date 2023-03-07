@@ -64,7 +64,7 @@ h6 {
 
     .login {
         width: 60vw;
-        height: 500px;
+        height: auto;
     }
 
     .login input {
@@ -91,7 +91,7 @@ h6 {
 @media screen and (max-width: 600px) {
     .login {
         width: 75vw;
-        height: 420px;
+        height: auto;
     }
 
     .login input {

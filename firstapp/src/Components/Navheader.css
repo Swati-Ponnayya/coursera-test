@@ -3,34 +3,46 @@ body {
 }
 
 .Navheader {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: #B7472A;
   height: 65px;
   width: 100%;
   box-sizing: border-box;
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top :0 
+
 }
 
 .h2 {
   color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   font-size: 2em;
   font-family: Merriweather Sans;
-  display: inline-block;
-  margin-top: 2vh;
+  margin: 2vh auto;
   font-weight: 400;
-  justify-content: center;
   box-sizing: border-box;
+  width: 400px;
 }
 
 .User_info {
   display: inline-flex;
   float: right;
   margin-top: 2vh;
+  width: 350px;
   box-sizing: border-box;
 }
 
 .User_info img {
   display: flex;
   float: right;
-  margin: 0 2vw 0 0;
+  margin: 0 20px 0 0;
   height: 30px;
   width: 30px;
 }
@@ -40,7 +52,7 @@ body {
   /* font-size: 1em; */
   font-family: Merriweather Sans;
   /* display: inline-block; */
-  margin: 1vh 1vw 2vw 0;
+  margin: 1vh 1vw 2vw auto;
   box-sizing: border-box;
 }
 
@@ -77,12 +89,12 @@ button {
   top: 0;
   left: -100%;
   transition: 850ms;
-  z-index: 1;
 }
 
 .nav-menu.active {
   left: 0;
   transition: 350ms;
+  z-index: 99999;
   border-right: 2px #B7472A solid;
 }
 
@@ -124,7 +136,7 @@ svg {
 .nav-menu-items {
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0; 
 }
 
 .navbar-toggle {
@@ -145,6 +157,7 @@ span {
   .h2 {
     font-size: 1.9em;
   }
+
   /* idebr */
   .nav-text a {
     font-size: 0.9em;
@@ -155,7 +168,8 @@ span {
     margin-top: 1.5vw;
     font-size: 1.3em;
   }
-  .nav-menu{
+
+  .nav-menu {
     width: 30vw;
   }
 
@@ -166,10 +180,12 @@ span {
   .h2 {
     font-size: 1.7em;
     margin-top: 2.5vh;
+    width: 200px;
   }
 
   .User_info {
     margin-top: 3vh;
+    width: 15vw;
     margin-right: 1vw;
   }
 

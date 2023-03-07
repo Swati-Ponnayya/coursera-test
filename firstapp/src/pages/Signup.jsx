@@ -37,6 +37,10 @@ const Signup = () => {
                 })
                 .catch((error) => {
                     console.log(error);
+                    if (error.code === "auth/email-already-in-use") {
+                        alert("Email already in use.")
+                        window.location.reload();
+                    }
                 });
             setSignup("")
         }
@@ -58,7 +62,10 @@ const Signup = () => {
             errors.pass = "Password should be greater than 6 letters"
         } else if (values.pass.length > 10) {
             errors.pass = "Password should be less than 10 letters"
+        } else if (!regex.test(values.pass)) {
+            errors.pass = "Password format is invalid";
         }
+
         return errors;
     }
 
@@ -71,7 +78,7 @@ const Signup = () => {
                     <p>{signupFormsErrors.username ? (signupFormsErrors.username) : signup.username.length !== 0 ? ("") : ("Hint: Email should be in proper format")}</p>
                 </div>
                 <div>
-                    <input type="password" placeholder="Password" maxLength="10" name="pass" onChange={handleChangeSignup} value={signup.pass} />
+                    <input type="password" placeholder="Password" pattern='/^[a-z0-9]$/' maxLength="10" name="pass" onChange={handleChangeSignup} value={signup.pass} />
                     <p>{signupFormsErrors.pass ? (signupFormsErrors.pass) : signup.pass.length !== 0 ? ("") : ("Hint: Password should be greater than 6 letters & less than 10 letters")}</p>
                 </div>
                 <input type="submit" value="signup" onClick={handleSubmitsignup} />

@@ -37,6 +37,10 @@ hr {
     /* margin-top: 6vh; */
     border: 0.5px #B7472A solid;
     background-color: #B7472A;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top :145px 
 }
 
 /* display ingredient */
@@ -46,7 +50,7 @@ hr {
     border-bottom: black 1px solid;
     text-transform: capitalize;
     font-size: 1.4em;
-    
+
 }
 
 .Ing_list {
@@ -72,7 +76,7 @@ hr {
 }
 
 .Ing::-webkit-scrollbar-thumb {
-    background-color:#cacaca;
+    background-color: #cacaca;
 }
 
 .Ing button {
@@ -88,19 +92,24 @@ hr {
 
 
 /* display of seleted ingredient & find button */
-.display{
+.Display {
     height: 80px;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    background-color: white;
+    top: 65px;
 }
 
-.find{
-    width:8vw;
+.find {
+    width: 8vw;
     border-left: #B7472A 2px solid;
     box-sizing: border-box;
     display: inline-block;
     margin: 3vh 3vh 0 2vh;
     position: absolute;
     /* top: 10vh; */
-    right:1vw;
+    right: 1vw;
 }
 
 .find button {
@@ -122,79 +131,101 @@ hr {
     overflow: scroll;
     overflow-y: hidden;
     overflow-wrap: normal;
-    display: flex; 
+    display: flex;
     flex-direction: row;
     display: inline-flex;
     position: absolute;
-    left:5px;
+    left: 5px;
     box-sizing: border-box;
 }
 
-.ing_sel{
-    margin: 3px;
+.ing_sel {
+    margin: 4px;
     border-radius: 10px;
     border: 0px;
-    padding: 5px 10px;
-    font-size:0.9em;
+    padding: 5px 8px;
+    width: auto;
+    height: 38px;
+    font-size: 0.9em;
     background-color: #FFD5AB;
     /* box-sizing: border-box; */
 }
 
 .sel_ing::-webkit-scrollbar {
-    width:1px;
+    width: 1px;
     height: 6px;
 }
+
 .sel_ing::-webkit-scrollbar-thumb {
-    background-color:#cacaca;
+    background-color: #cacaca;
     border-radius: 30px;
 
 }
 
 /* end of seleted ingredient */
 
-@media screen and (max-width: 992px){
-    .Ing_list, .Ing{
+@media screen and (max-width: 992px) {
+
+    .Ing_list,
+    .Ing {
         width: 75vw;
     }
-    .find{
+
+    .find {
         right: 8vw;
     }
+
     .find button {
         width: 15vw;
         font-size: 1em;
         height: 45px;
         margin-left: 10px;
     }
-    .sel_ing{
+
+    .sel_ing {
         width: 75vw;
         margin-top: 3vh;
     }
-    .display{
+
+    .sel_ing svg {
+        fill: black;
+        height: 0.2vh;
+        stroke-width: 2px;
+    }
+
+    .display {
         margin-bottom: 2vh;
 
     }
 }
-@media screen and (max-width: 600px){
-    .Ing_list, .Ing{
+
+@media screen and (max-width: 600px) {
+
+    .Ing_list,
+    .Ing {
         width: 85vw;
         padding: 0;
     }
-    .find{
+
+    .find {
         right: 12vw;
     }
+
     .find button {
         width: 21vw;
     }
-    .sel_ing{
+
+    .sel_ing {
         width: 65vw;
     }
-    .ing_head{
+
+    .ing_head {
         font-size: 1.4em;
     }
 }
-.sel_ing svg{
+
+.sel_ing svg {
     fill: black;
     height: 2vh;
     stroke-width: 2.5px;
 }
-

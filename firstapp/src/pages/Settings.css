@@ -1,118 +1,97 @@
-  .signup {
-    background-color: #B7472A;
+.Settings {
+    /* background-color: #B7472A; */
     /* background-color: white; */
     margin: 5vh auto auto auto;
-    padding: 10px;
+    padding: 20px;
     width: 35vw;
-    height: 450px;
+    height: auto;
     border-radius: 10px;
     box-sizing: border-box;
+    border: 1px solid black;
+    text-align: left;
   }
 
-  .signup h1,
-  h6 {
-    color: whitesmoke;
-  }
-
-  .signup a {
+  .Settings a {
     font-size: 1.1em;
     text-transform: uppercase;
-
   }
 
-  .signup input {
+  .Settings input {
     border-color: #B7472A;
     padding: 6px;
     width: 25vw;
     height: 3vh;
     border-radius: 10px;
-    margin-top: 5vh;
   }
 
-  .signup input[type=submit] {
+  .Settings input[type=submit] {
     background-color: snow;
     box-sizing: border-box;
     color: #B7472A;
     text-transform: uppercase;
     font-weight: 600;
     padding: 5px;
-    width: 10vw;
+    width: auto;
     height: 6vh;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-top: 4vh;
-    box-sizing: border-box;
   }
 
-  .signup p {
-    font-size: 0.8em;
-    color: wheat;
-    margin: 2px;
+  .Settings h3 {
+    /* font-size: 0.8em;
+    color: wheat; */
+    margin-top: 5vh;
+    /* margin: 2px; */
     box-sizing: border-box;
   }
 
   @media screen and (max-width: 992px) {
-    .signup h5 {
+    .Settings h4 {
       margin-right: 5vw;
     }
 
-    .signup {
+    .Settings {
       width: 60vw;
-      height: auto;
     }
 
-    .signup input {
+    .Settings input {
       width: 45vw;
       height: 2.8vh;
       font-size: 1em;
-      margin-top: 4vh;
+      /* margin-top: 4vh; */
     }
 
-    .signup input[type=submit] {
-      width: 25vw;
-      height: 6vh;
-      margin-top: 2vh;
+    .Settings input[type=submit] {
+      height: 4vh;
+      margin-top: 3vh;
       font-size: 1em;
     }
-
-    .signup h6 {
-      font-size: 1em;
-    }
-
-    .signup p {
-      font-size: 0.9em;
-    }
-
   }
 
   @media screen and (max-width: 600px) {
-    .signup {
+    .Settings {
       width: 75vw;
-      height: auto;
     }
 
-    .signup input {
-
+    .Settings input {
       width: 60vw;
       height: 2.5vh;
-      margin-top: 4vh;
+      margin-top: 2vh;
     }
 
-    .signup input[type=submit] {
-      width: 25vw;
+    .Settings input[type=submit] {
       height: 5vh;
       margin-top: 3vh;
       font-size: 0.8em;
     }
 
-    .signup h1 {
-      font-size: 1.6em;
+    .Settings h1 {
+      font-size: 1.4em;
     }
 
-    .signup h6 {
-      font-size: 0.8em;
+    .Settings h4 {
+      font-size: 0.6em;
     }
 
-    .signup p {
-      font-size: 0.7em;
-    }
+   
   }
