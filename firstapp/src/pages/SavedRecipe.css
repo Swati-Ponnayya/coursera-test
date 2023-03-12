@@ -26,15 +26,17 @@
 .RecipesList img {
     width: 13vw;
     height: 16vh;
-    margin: 1px;
     float: left;
     margin-right: 25px;
     margin-left: 10px;
+    margin: 10px 20px 5px 10px;
 }
 
 .RecipesList h3 {
     text-decoration: underline;
     color: black;
+    display: inline-block;
+    margin-bottom: 0;
 }
 
 .RecipesList p {
@@ -42,7 +44,7 @@
     color: black;
 }
 
-.Save {
+.Delete{
     float: right;
     margin: 5px;
     background-color: #B7472A;
@@ -84,12 +86,11 @@ a:-webkit-any-link {
         font-size: 1.2em;
         margin-top: 0;
     }
-
-    .RecipesList p {
+    .RecipesList p{
         font-size: 0.8em;
     }
 
-    .Save {
+    .Delete{
         float: right;
         margin-left: -50%;
     }
@@ -116,7 +117,7 @@ a:-webkit-any-link {
     }
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:420px) {
 
     .RecipesList {
         width: 80vw;
@@ -134,4 +135,5 @@ a:-webkit-any-link {
         width: 42vw;
         height: 15vh;
     }
+   
 }

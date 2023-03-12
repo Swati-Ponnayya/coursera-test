@@ -32,13 +32,14 @@ const PopularRecipe = () => {
                 {data.map((data1, index) => {
                     return (
                         <div key={index} className="P_RecipesList">
+                            <img src={data1.image}  alt={data1.title} />
                             <Link to={data1.spoonacularSourceUrl}>
-                                <img src={data1.image} height="100px" alt={data1.title} />
                                 <h3>{data1.title}</h3>
-                                <p>Cooking Time :-  {data1.readyInMinutes} mintues</p>
-                                <p>Serving :-  {data1.servings} person</p>
-                                <p></p>{data1.instructions}
                             </Link>
+                            <p>Cooking Time :-  {data1.readyInMinutes} mintues</p>
+                            <p>Serving :-  {data1.servings} person</p>
+                            {/* {data1.instructions} */}
+
                         </div>
                     )
                 })}

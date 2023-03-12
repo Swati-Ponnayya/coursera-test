@@ -1,7 +1,9 @@
 .App {
   text-align: center;
+  background-image: linear-gradient( rgba(255,255,255, 0.8) 0 100%),url(img/bg.png);
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;

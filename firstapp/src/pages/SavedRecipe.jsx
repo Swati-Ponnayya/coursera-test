@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from "../firebase/firebase";
-import { ref, onValue, remove, child } from "firebase/database";
+import { ref, onValue, remove } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import "./Recipelist.css";
+import "./SavedRecipe.css";
 
 const SavedRecipe = () => {
     const [err, setErr] = useState('');
     const [data, setData] = useState([]);
     const [list, setList] = useState([]);
-    // key=da1d576ade9846be99f6a854ae590ac0  3d7009d38e2c4ad8aaa806685013cbd5   49785da206294648950f3afd48bb48ca
     const [authUser, setAuthUser] = useState(null);
-    const [array, setarray] = useState(0);
     var currentuser = "";
+    let records = []
 
     useEffect(() => {
         // to get the current user uid
@@ -27,46 +26,33 @@ const SavedRecipe = () => {
         });
 
         const data2 = async () => {
+            let key = []
             await onValue(ref(db, `${currentuser}/`), (snapshot) => {
-                let records = []
                 // to get data acc too user uid
                 snapshot.forEach(childSnap => {
                     const datak = childSnap.key
-                    const data = childSnap.val()
-                    console.log(datak)
-
-                    if (datak === currentuser) {
-                        records.push({ data });
-                    }
+                    // const data = childSnap.val()
+                    childSnap.forEach(ad => {
+                        key = ad.key
+                        const data = ad.val().Saved_R
+                        if (datak === currentuser) {
+                            records.push({ data });
+                        }
+                    })
                 })
+                console.log(records)
                 if (records !== null) {
                     Object.values(records).map(async (todo) => {
                         setList((oldArray) => [...oldArray, todo])
-                        console.log(todo.data.Saved_R)
                         try {
-                            // if the length of the saved recipe is equal to 1
-                            if ((todo.data.Saved_R).length === 1) {
-                                const response = await fetch(`https://api.spoonacular.com/recipes/${todo.data.Saved_R}/information?apiKey=49785da206294648950f3afd48bb48ca `);
-                                console.log("in", todo.data.Saved_R)
-                                if (!response.ok) {
-                                    throw new Error(`Error! status: ${response.status}`);
-                                }
-                                const result = await response.json();
-                                setData((recipe) => [result])
-
+                            // key=da1d576ade9846be99f6a854ae590ac0  3d7009d38e2c4ad8aaa806685013cbd5   49785da206294648950f3afd48bb48ca
+                            const response = await fetch(`https://api.spoonacular.com/recipes/${todo.data}/information?apiKey=49785da206294648950f3afd48bb48ca `);
+                            if (!response.ok) {
+                                throw new Error(`Error! status: ${response.status}`);
                             }
-                            // if the length of the saved recipe is more than 1
-                            else if ((todo.data.Saved_R).length > 1) {
-                                todo.data.Saved_R.map(async (Id) => {
-                                    console.log("2", Id)
-                                    const response = await fetch(`https://api.spoonacular.com/recipes/${Id}/information?apiKey=49785da206294648950f3afd48bb48ca `);
-                                    if (!response.ok) {
-                                        throw new Error(`Error! status: ${response.status}`);
-                                    }
-                                    const result = await response.json();
-                                    setData((recipe) => [...recipe, result])
-                                })
-                            }
+                            const result = await response.json();
+                            // add recipe details and key to delete the recipe
+                            setData((recipe) => [...recipe, { result, key }])
                         } catch (err) {
                             setErr(err.message);
                         }
@@ -79,10 +65,11 @@ const SavedRecipe = () => {
             listen();
         };
     }, [])
+
     //  to remove the recipe from the list
-    const D_recipe = (todo) => {
-        remove(ref(db, `${currentuser}/` + `${todo}`));
-        console.log(todo)
+    const D_recipe = async (todo) => {
+        console.log(authUser.uid);
+        await remove(ref(db, `${authUser.uid}/${todo}`));
         alert("Removed from saved Recipe")
         window.location.reload();
     };
@@ -97,15 +84,14 @@ const SavedRecipe = () => {
                         {data.map((data1, index) => {
                             return (
                                 <div key={index} className="RecipesList">
-                                    <img src={data1.image} height="100px" alt={data1.title} />
-                                    {/* {list.map((todo) => { */}
-                                    <button style={{ float: "right" }} onClick={() => D_recipe(data1.id)}>delete</button>
-                                    {/* })} */}
-                                    <Link to={data1.spoonacularSourceUrl}>
-                                        <h3 >{data1.title}</h3>
-                                        <p>Cooking Time :-  {data1.readyInMinutes} mintues</p>
-                                        <p>Serving :-  {data1.servings} person</p>
+                                    <button onClick={() => D_recipe(data1.key)} className="Delete" >Delete</button>
+                                    <img src={data1.result.image} height="100px" alt={data1.title} />
+                                    <Link to={data1.result.spoonacularSourceUrl}>
+                                        <h3 >{data1.result.title}</h3>
                                     </Link>
+                                    <p>Cooking Time :-  {data1.result.readyInMinutes} mintues</p>
+                                    <p>Serving :-  {data1.result.servings} person</p>
+
                                 </div>
                             )
                         })}
@@ -113,9 +99,6 @@ const SavedRecipe = () => {
                 ) : (
                     <h2>You have to <Link to="/login">Login</Link> to see saved recipes  </h2>
                 )}
-
-
-
             </div>
         </>
     )

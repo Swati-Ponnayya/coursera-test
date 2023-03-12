@@ -2545,11 +2545,6 @@
         "categories": "others"
     },
     {
-        "Name": "oil",
-        "Id": "4582",
-        "categories": "oils & extract"
-    },
-    {
         "Name": "oil packed sun dried tomatoes",
         "Id": "11956",
         "categories": "oils & extract"
@@ -3353,11 +3348,6 @@
         "Name": "salsa verde",
         "Id": "27028",
         "categories": "sauces & syrup"
-    },
-    {
-        "Name": "salt",
-        "Id": "2047",
-        "categories": "spices"
     },
     {
         "Name": "salt and pepper",

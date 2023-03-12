@@ -20,20 +20,19 @@ function App() {
       <Router>
         <Navheader />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path="/recipelist" element={<Recipelist />} />
-          <Route path='/suggestion' element={<Suggestion />} />
-          <Route path='/articles' element={<Articles />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/signOut' element={<Signout />} />
-          <Route path='/popularRecipe' element={<PopularRecipe />} />
-          <Route path='/savedRecipes' element={<SavedRecipe/>}/>
-          <Route path='/settings' element={<Settings/>}/>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path="/recipelist" element={<Recipelist />} />
+          <Route exact path='/suggestion' element={<Suggestion />} />
+          <Route exact path='/articles' element={<Articles />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/signup' element={<Signup />} />
+          <Route exact path='/signOut' element={<Signout />} />
+          <Route exact path='/popularRecipe' element={<PopularRecipe />} />
+          <Route exact path='/savedRecipes' element={<SavedRecipe/>}/>
+          <Route exact path='/settings' element={<Settings/>}/>
         </Routes>
       </Router>
       {/* </AuthContextProvider> */}
-
     </div>
   );
 }

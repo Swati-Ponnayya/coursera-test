@@ -8,12 +8,13 @@ function Articles() {
     return (
         <div className="main">
             <Link to="/" className='backH'><h4>&lt; Home</h4></Link>
+            <h1>Cooking Tricks & Tips</h1>
             <div className="display">
-                <h1>Cooking Tricks & Tips</h1>
                 {Article.map((article) => (
                     <div key={article.Id} className="articles" >
+                         <h2>{article.Id} . {article.Title} </h2>
                         <img src={article.Image} alt={article.Title} />
-                        <h2>{article.Id} . {article.Title} </h2>
+                       
                         <p>{article.Description}</p>
                     </div>
                 ))}

@@ -40,7 +40,7 @@ hr {
     position: -webkit-sticky;
     /* Safari */
     position: sticky;
-    top :145px 
+    top: 145px
 }
 
 /* display ingredient */
@@ -50,7 +50,9 @@ hr {
     border-bottom: black 1px solid;
     text-transform: capitalize;
     font-size: 1.4em;
-
+    background-color: white;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .Ing_list {
@@ -58,6 +60,7 @@ hr {
     border: 1px black solid;
     margin: 30px auto 30px;
     border-radius: 5px;
+    background-color: white;
 }
 
 .Ing {
@@ -89,7 +92,13 @@ hr {
 }
 
 /* End display ingredient*/
-
+.message {
+    width: 30vw;
+    background-color: rgba(104, 101, 101, 0.1);
+    align-items: center;
+    margin: 10px auto;
+    padding: 1px;
+}
 
 /* display of seleted ingredient & find button */
 .Display {

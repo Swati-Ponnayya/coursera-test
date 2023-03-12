@@ -62,7 +62,7 @@ function Home() {
 	// passing the recipe id and missing ing to other page 
 	useEffect(() => {
 		if (Recipelist.length > 0)
-			navigate("./Recipelist", { state: { id: { Recipelist }, miss_ing: {miss_ing} } });
+			navigate("./Recipelist", { state: { id: { Recipelist }, miss_ing: { miss_ing } } });
 	}, [Recipelist]);
 
 	return (
@@ -84,6 +84,9 @@ function Home() {
 				<div style={{ color: 'black' }}>
 					{err && <h2>{err}</h2>}
 					{isLoading && <h2>Loading...</h2>}
+				</div>
+				<div className="message">
+					<p> We assume you have water, oil, and salt. </p>
 				</div>
 
 				{Object.keys(categorizedData).map((key, index) => (
